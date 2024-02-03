@@ -1,0 +1,95 @@
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.header-right a {
+    text-decoration: none;
+    margin-left: 20px;
+    color: white;
+}
+
+.hero {
+    padding: 20px 0;
+}
+
+.hero h1 {
+    margin-bottom: 10px;
+}
+
+.hero p {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #f8a488;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 5%;
+}
+
+.search-ride, .offer-ride {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 45%;
+}
+
+.search-ride {
+    background-color: #ffd6c9;
+}
+
+.offer-ride {
+    background-color: #c0e7fa;
+}
+
+.cities {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.car-icon {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Ensures padding does not affect overall width */
+}
