@@ -1,0 +1,46 @@
+Bien sûr, je vais vous proposer une structure de site basée sur les fonctionnalités que vous avez mentionnées. Voici un schéma simple en utilisant une approche basée sur les rôles (chauffeur/passager) :
+
+### Structure du Site
+
+1. **Page d'Accueil :**
+   - Présentation du service et incitation à la connexion ou à l'inscription.
+  
+2. **Page de Connexion / Inscription :**
+   - Formulaire de connexion pour les utilisateurs existants.
+   - Formulaire d'inscription pour les nouveaux utilisateurs.
+
+3. **Tableau de Bord de l'Utilisateur Connecté :**
+   - Affiche les informations générales de l'utilisateur (nom, prénom, photo de profil, etc.).
+   - Options pour déclarer son statut en tant que chauffeur ou passager.
+
+4. **Gestion du Profil :**
+   - Permet à l'utilisateur de mettre à jour ses informations personnelles (nom, photo, centres d'intérêt, etc.).
+   - Possibilité de changer son adresse de destination, en garantissant la confidentialité (point de rencontre à 5 min de marche).
+
+5. **Gestion des Horaires de Transport :**
+   - Permet à l'utilisateur de définir ses horaires de transport habituels.
+   - Fonctionnalité pour actualiser ou confirmer son statut de disponibilité au trajet, dans le cadre d'une routine.
+
+6. **Recherche et Mise en Correspondance :**
+   - Interface pour trouver des trajets disponibles en tant que passager ou pour proposer des trajets en tant que chauffeur.
+   - Affiche les correspondances potentielles en fonction de la proximité géographique et des horaires compatibles.
+
+7. **Communication entre Utilisateurs :**
+   - Espace pour que les utilisateurs communiquent avant le trajet, respectant les règles EDI.
+   - Possibilité de partager des centres d'intérêt, de discuter des détails du trajet, etc.
+
+8. **Notes Importantes :**
+   - Les passagers seront déposés à des points de rencontre dans un rayon de maximum 5 min de marche de leur domicile pour protéger leur vie privée.
+   - Respect des règles EDI de Polytechnique Montréal pour assurer l'équité, la diversité, et l'inclusion.
+
+### Notes Importantes
+
+- Confidentialité : Assurez-vous de mettre en place des mécanismes appropriés pour garantir la confidentialité des informations des utilisateurs.
+  
+- Communication Respectueuse : Encouragez une communication respectueuse et inclusive entre les utilisateurs, conformément aux règles EDI.
+
+- Intégration Google Maps : Intégrez l'API Google Maps pour faciliter la gestion des adresses, des points de rencontre, et le calcul des itinéraires.
+
+- Itérations Futures : En tant que prototype, concentrez-vous sur l'essentiel. Pour un produit final, des itérations futures pourraient inclure des fonctionnalités plus avancées, telles que des recommandations intelligentes basées sur les préférences des utilisateurs.
+
+Cette structure de site vise à offrir une expérience conviviale et intuitive aux utilisateurs, en mettant l'accent sur la confidentialité, la communication respectueuse, et la facilité d'utilisation.
