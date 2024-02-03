@@ -22,9 +22,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.error(err));
 
 
-const User = mongoose.model('User', userSchema);
-
-
 
 //fonction pour ajouter un utilisateur au database
 const userSchema = new mongoose.Schema({
@@ -36,6 +33,8 @@ const userSchema = new mongoose.Schema({
     homeAddress: String,
     carSeats: Number // Optional, use if the user is a driver
 });
+
+const User = mongoose.model('User', userSchema);
 
 const newUser = new User({
     firstName: 'John',
