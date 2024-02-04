@@ -84,3 +84,8 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {;
             // Handle errors (e.g., notify user that sign up failed)
         });
 });
+
+function redirectToFAQ() {
+    // Rediriger vers la page FAQ.html
+    window.location.href = 'FAQ.html';
+}
