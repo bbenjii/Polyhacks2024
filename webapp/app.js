@@ -35,7 +35,6 @@ app.post('/login', async (req, res) => {
         if (user) {
 
             if (password == user.password) {
-                console.log(password);
                 // Si le mot de passe correspond, définir l'ID utilisateur dans la session
                 req.session.userId = user._id;
 
@@ -53,18 +52,6 @@ app.post('/login', async (req, res) => {
         // En cas d'erreur serveur, renvoyer une réponse avec le statut 500
         res.status(500).json({ message: 'Internal server error' });
     }
-
-    // If authentication is successful
-    //mock id
-    // req.session.userId = "65becd30c93f464f57302939";
-
-    // res.status(200).json({ success: true });
-
-
-
-    // req.session.userId = user._id; // Store the user's ID (or other identifier) in the session
-    // res.redirect('/userdashboard'); // Redirect to the dashboard or other page
-    // res.redirect( 301,'/public/dashboard.html');
 
 });
 
