@@ -10,7 +10,6 @@ header {
     text-align: center;
 }
 
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -55,32 +54,38 @@ button {
 
 main {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap; /* This allows items to wrap to the next line */
+    justify-content: space-around; /* This will space items evenly, including space at the start and end */
     padding: 20px 5%;
 }
 
-.search-ride, .offer-ride, .sign-up, .log-in {
+.container {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 45%;
-}
-
-.search-ride {
+    width: 100%;
     background-color: #ffd6c9;
+    margin: 10px; /* Adjust the value as needed */
+
+
+
 }
 
-.sign-up {
-    background-color: antiquewhite;
-}
+/*.search-ride {*/
+/*    background-color: #ffd6c9;*/
+/*}*/
 
-.log-in {
-    background-color: cadetblue;
-}
+/*.sign-up {*/
+/*    background-color: antiquewhite;*/
+/*}*/
 
-.offer-ride {
-    background-color: #c0e7fa;
-}
+/*.log-in {*/
+/*    background-color: cadetblue;*/
+/*}*/
+
+/*.offer-ride {*/
+/*    background-color: #c0e7fa;*/
+/*}*/
 
 .cities {
     display: flex;

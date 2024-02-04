@@ -18,9 +18,30 @@ function displayUsers(users) {
     });
 }
 
+document.getElementById('loginForm').addEventListener('submit', function(e) {;
 
-document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(),
+    })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to dashboard if login is successful
+                window.location.href = '/dashboard.html';
+            } else {
+                // Handle login failure here
+                console.log('Login failed');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
+
+document.getElementById('signupForm').addEventListener('submit', function(e) {;
 
     const newUser = {
         firstName: document.getElementById('firstName').value,
@@ -33,7 +54,6 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 
 
     };
-    alert(newUser.email)
 
     fetch('http://localhost:3000/users', {
         method: 'POST',

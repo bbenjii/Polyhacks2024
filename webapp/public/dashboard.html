@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="css/dashboardstyle.css">
+</head>
+<body>
+
+<header>
+    <!-- Navigation, logo, or user info could go here -->
+</header>
+
+<main>
+
+
+    <div class="container" >
+        <h2>User Information</h2>
+        <p id="userName"></p>
+        <p id="userEmail"></p>
+
+    </div>
+
+    <div class="container" >
+        <section id="currentRideRequests">
+            <h2>Current Ride Requests</h2>
+            <ul id="rideRequestsList">
+                <!-- Ride requests will be added here dynamically -->
+            </ul>
+        </section>
+
+    </div>
+
+    <div class="container search-ride">
+        <section >
+            <h2>Need a ride?</h2>
+            <p>Find a ride and carpool anywhere in Canada.</p>
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+            <input type="text" placeholder="Leaving (optional)">
+            <button>Find a ride</button>
+        </section>
+    </div>
+
+    <div class="container offer-ride">
+        <section >
+            <h2>Driving somewhere?</h2>
+            <p>Post empty seats and collect money to cover your driving costs.</p>
+            <div class="locations">
+                <span>Location A</span>
+                <span class="car-icon">🚗</span>
+                <span>City B</span>
+            </div>
+            <button>Post a trip</button>
+        </section>
+    </div>
+
+
+</main>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
