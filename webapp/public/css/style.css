@@ -10,6 +10,7 @@ header {
     text-align: center;
 }
 
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -58,7 +59,7 @@ main {
     padding: 20px 5%;
 }
 
-.search-ride, .offer-ride {
+.search-ride, .offer-ride, .sign-up, .log-in {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -67,6 +68,14 @@ main {
 
 .search-ride {
     background-color: #ffd6c9;
+}
+
+.sign-up {
+    background-color: antiquewhite;
+}
+
+.log-in {
+    background-color: cadetblue;
 }
 
 .offer-ride {
