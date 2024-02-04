@@ -68,6 +68,23 @@ main {
     margin: 10px; /* Adjust the value as needed */
 
 }
+#rideRequestsContainer {
+    display: none; /* Initially hide the container */
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.ride-request {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Show the container when it has content */
+#rideRequestsContainer.active {
+    display: flex;
+}
 
 .success-message {
     padding: 10px;

@@ -24,6 +24,33 @@ app.use(express.static('public'));
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
 
+// Get all pending ride requests
+app.get('/ride-requests', async (req, res) => {
+    try {
+        // You might want to filter out only 'pending' ride requests
+        const rideRequests = await RideRequest.find({ status: 'pending' });
+        res.json(rideRequests);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Driver accepts a ride request
+app.post('/ride-requests/accept/:requestId', async (req, res) => {
+    try {
+        const requestId = req.params.requestId;
+        const driverId = req.session.userId; // Get the driver's user ID from the session or token
+        const rideRequest = await RideRequest.findByIdAndUpdate(requestId, {
+            status: 'confirmed',
+            driverId: driverId
+        }, { new: true });
+        res.json(rideRequest);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 //login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
@@ -141,7 +168,9 @@ app.post('/ride-requests', async (req, res) => {
     try {
         const newRideRequest = new RideRequest({
             ...req.body,
-            userId: req.session.userId // assuming you have user authentication and `req.user` is populated
+            userId: req.session.userId, // assuming you have user authentication and `req.user` is populated
+            driverAssigned: 0
+
         });
         const savedRideRequest = await newRideRequest.save();
         res.status(201).json(savedRideRequest);

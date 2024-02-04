@@ -19,6 +19,76 @@ function fetchAndDisplayUserInfo() {
         });
 }
 
+
+document.getElementById('offerRideButton').addEventListener('click', function() {
+    document.getElementById('cancelButton').style.display = 'block';
+
+    fetch('http://localhost:3000/ride-requests')
+        .then(response => response.json())
+        .then(rideRequests => {
+            const list = document.getElementById('rideRequestsList');
+            list.innerHTML = ''; // Clear the list
+            rideRequests.forEach(request => {
+                const listItem = document.createElement('div');
+                listItem.innerHTML = `
+          <p>From: ${request.fromLocation}, <br>To: ${request.toLocation}<br></p>
+          <button onclick="acceptRide('${request._id}')">Accept</button>
+        `;
+                list.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+document.getElementById('cancelButton').addEventListener('click', function() {
+    // Clear the list
+    document.getElementById('rideRequestsList').innerHTML = '';
+
+    // Hide the cancel button again
+    this.style.display = 'none';
+});
+function acceptRide(requestId) {
+    document.getElementById('rideRequestsList').innerHTML = '';
+    document.getElementById('cancelButton').style.display = 'none';
+
+    fetch(`http://localhost:3000/ride-requests/accept/${requestId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Include authentication token if required
+        }
+    })
+        .then(response => response.json())
+        .then(updatedRequest => {
+            console.log('Ride accepted:', updatedRequest);
+            // Update the UI to reflect the ride acceptance
+            // For example, disable the accept button, show a message, or remove the request from the list
+        })
+        .then(data => {
+            console.log('Ride request submitted:', data);
+            showMessage('You have accepted this carpool, we will notify the user who requested!');
+        })
+
+        .catch(error => console.error('Error:', error));
+}
+
+function createRideRequestElement(request) {
+    const element = document.createElement('div');
+    element.className = 'ride-request';
+    element.innerHTML = `
+    <p>Ride from: ${request.fromLocation} to ${request.toLocation}<br></p> 
+     <p>Departure: ${new Date(request.departureTime).toLocaleString()}<br></p>
+    <p>Seats needed: ${request.seatsNeeded}</p><br>
+    <button onclick="acceptRideRequest('${request._id}')">Accept<br><br></button>
+  `;
+    return element;
+}
+
+function acceptRideRequest(requestId) {
+    // Logic to accept the ride request...
+}
+
+
 document.getElementById('rideRequestForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
