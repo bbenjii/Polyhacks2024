@@ -90,6 +90,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected...'))
     .catch((err) => console.error(err));
 
+
+//add ride request to database
 const rideRequestSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     fromLocation: String,
@@ -98,6 +100,51 @@ const rideRequestSchema = new mongoose.Schema({
     seatsNeeded: Number,
     additionalInfo: String,
     status: { type: String, default: 'pending' } // e.g., pending, confirmed, completed, cancelled
+});
+
+const RideRequest = mongoose.model('RideRequest', rideRequestSchema);
+
+const newRideRequest = new RideRequest({
+    userID: '65becd30c93f464f57302939',
+    fromLocation: "2500 Chem. de Polytechnique, Montréal, QC H3T 1J4",
+    toLocation: "3455 Rue Durocher, Montréal, QC H2X 2C9",
+    departureTime: new Date().toJSON(),
+    seatsNeeded: 1,
+    additionalInfo: String,
+    status: "pending"
+});
+//
+// newRideRequest.save()
+//     .then(user => console.log(user))
+//     .catch(err => console.error(err));
+
+
+// POST route to add a new request
+
+// const RideRequest = require('./models/RideRequest'); // Update with the correct path
+
+// POST route to submit a ride request
+app.post('/ride-requests', async (req, res) => {
+    try {
+        const newRideRequest = new RideRequest({
+            ...req.body,
+            userId: req.session.userId // assuming you have user authentication and `req.user` is populated
+        });
+        const savedRideRequest = await newRideRequest.save();
+        res.status(201).json(savedRideRequest);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+app.post('/users', async (req, res) => {
+    try {
+        const newUser = new User(req.body);
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
 
 
@@ -133,7 +180,6 @@ const newUser = new User({
 // Route to get all users
 app.get('/users', async (req, res) => {
     try {
-
         const users = await User.find({});
         res.status(200).json(users);
     } catch (error) {

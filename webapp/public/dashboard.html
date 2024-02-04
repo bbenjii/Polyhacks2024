@@ -34,15 +34,20 @@
     </div>
 
     <div class="container search-ride">
-        <section >
-            <h2>Need a ride?</h2>
-            <p>Find a ride and carpool anywhere in Canada.</p>
-            <input type="text" placeholder="From">
-            <input type="text" placeholder="To">
-            <input type="text" placeholder="Leaving (optional)">
-            <button>Find a ride</button>
-        </section>
+        <h2>Request a Ride</h2>
+        <form id="rideRequestForm">
+            <input type="text" id="fromLocation" placeholder="From" required>
+            <input type="text" id="toLocation" placeholder="To" required>
+            <input type="datetime-local" id="departureTime" required>
+            <input type="number" id="seatsNeeded" placeholder="Seats Needed" required>
+            <textarea id="additionalInfo" placeholder="Additional Info"></textarea>
+            <button type="submit">Request Ride</button>
+        </form>
+
     </div>
+    <!-- Add this below your form in the HTML -->
+    <div id="messageContainer"></div>
+
 
     <div class="container offer-ride">
         <section >

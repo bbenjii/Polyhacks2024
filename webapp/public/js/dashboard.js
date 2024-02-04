@@ -19,4 +19,53 @@ function fetchAndDisplayUserInfo() {
         });
 }
 
-// Call this function when the page loads or after successful login
+document.getElementById('rideRequestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const rideRequest = {
+        fromLocation: document.getElementById('fromLocation').value,
+        toLocation: document.getElementById('toLocation').value,
+        departureTime: new Date(document.getElementById('departureTime').value).toISOString(),
+        seatsNeeded: parseInt(document.getElementById('seatsNeeded').value, 10),
+        additionalInfo: document.getElementById('additionalInfo').value
+    };
+
+    fetch('http://localhost:3000/ride-requests', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Include authentication token if required
+        },
+        body: JSON.stringify(rideRequest),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Ride request submitted:', data);
+            // Handle success
+        })
+        .then(data => {
+            console.log('Ride request submitted:', data);
+            showMessage('We\'ve received your ride request and will notify you when a driver is available to pick you up.');
+        })
+        .catch((error) => {
+            console.error('Error submitting ride request:', error);
+            // Handle errors
+        });
+});
+
+function showMessage(message, isError) {
+    const messageContainer = document.getElementById('messageContainer');
+    const messageDiv = document.createElement('div');
+    messageDiv.textContent = message;
+    messageDiv.className = isError ? 'error-message' : 'success-message';
+
+    // Clear any previous messages
+    messageContainer.innerHTML = '';
+    // Add the new message
+    messageContainer.appendChild(messageDiv);
+
+    // Remove the message after some time
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}

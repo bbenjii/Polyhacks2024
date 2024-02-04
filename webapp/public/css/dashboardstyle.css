@@ -67,9 +67,22 @@ main {
     background-color: #ffd6c9;
     margin: 10px; /* Adjust the value as needed */
 
-
-
 }
+
+.success-message {
+    padding: 10px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
 
 /*.search-ride {*/
 /*    background-color: #ffd6c9;*/
