@@ -18,6 +18,15 @@ nav {
     padding: 10px 5%;
 }
 
+/* General styling for the entire footer */
+footer {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Text color */
+    padding: 20px; /* Padding for content inside the footer */
+    text-align: center; /* Center-align the content */
+}
+
+
 .logo {
     font-weight: bold;
     font-size: 24px;
@@ -59,11 +68,18 @@ main {
     padding: 20px 5%;
 }
 
-.search-ride, .offer-ride, .sign-up, .log-in {
+.search-ride, .sign-up, .log-in {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 45%;
+}
+
+.pffer-ride, {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 70%;
 }
 
 .search-ride {
@@ -80,6 +96,13 @@ main {
 
 .offer-ride {
     background-color: #c0e7fa;
+    order: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding for styling */
 }
 
 .cities {
@@ -103,11 +126,19 @@ input[type="text"] {
     box-sizing: border-box; /* Ensures padding does not affect overall width */
 }
 
-input[type="password"] {
+/*table booking fees */
+table {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
     border: 1px solid #ddd;
-    box-sizing: border-box; /* Ensures padding does not affect overall width */
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
 }
