@@ -22,7 +22,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.error(err));
 
 
-const User = mongoose.model('User', userSchema);
 
 
 
@@ -37,27 +36,45 @@ const userSchema = new mongoose.Schema({
     carSeats: Number // Optional, use if the user is a driver
 });
 
+const User = mongoose.model('User', userSchema);
+
 const newUser = new User({
-    firstName: 'John',
-    lastName: 'Doe',
-    password: 'hashed_password_here',
-    email: 'john.doe@example.com',
-    university: 'Some University',
-    homeAddress: '123 Main St',
+    firstName: 'Omar',
+    lastName: 'Zed',
+    password: '12345678910',
+    email: 'omarzed@gmail.com',
+    university: 'Polytechnique',
+    homeAddress: 'Cote Vertu',
     carSeats: 4
 });
 
-newUser.save()
-    .then(user => console.log(user))
-    .catch(err => console.error(err));
+// newUser.save()
+//     .then(user => console.log(user))
+//     .catch(err => console.error(err));
 
 
 //function chercher tout les utilisateur
 // Route to get all users
 app.get('/users', async (req, res) => {
     try {
+
         const users = await User.find({});
         res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+// POST route to add a new user
+app.post('/users', async (req, res) => {
+    try {
+        console.log(req.body)
+        const newUser = new User(req.body);
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
+        console.log(newUser)
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
