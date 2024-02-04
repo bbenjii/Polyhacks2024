@@ -33,6 +33,7 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 
 
     };
+    alert(newUser.email)
 
     fetch('http://localhost:3000/users', {
         method: 'POST',

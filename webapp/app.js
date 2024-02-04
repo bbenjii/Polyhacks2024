@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+app.use(express.json()); // for parsing application/json
+const cors = require('cors');
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
@@ -11,18 +14,12 @@ app.use(express.static('public'));
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
 
-
 //mongodb connection string
 const mongoose = require('mongoose');
-const dbURI = "mongodb+srv://polyhacks2024:polyhacks-project@polyhacks-carpool.gye06fd.mongodb.net/?retryWrites=true&w=majority"
-
-;
+const dbURI = "mongodb+srv://polyhacks2024:polyhacks-project@polyhacks-carpool.gye06fd.mongodb.net/?retryWrites=true&w=majority" ;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected...'))
     .catch((err) => console.error(err));
-
-
-
 
 
 //fonction pour ajouter un utilisateur au database
@@ -69,12 +66,9 @@ app.get('/users', async (req, res) => {
 // POST route to add a new user
 app.post('/users', async (req, res) => {
     try {
-        console.log(req.body)
         const newUser = new User(req.body);
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
-        console.log(newUser)
-
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
