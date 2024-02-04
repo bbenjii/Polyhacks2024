@@ -25,14 +25,40 @@ app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT
 
 
 //login
-app.post('/login', (req, res) => {
-    // ... your login logic here, including authentication
-    console.log("login started")
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        // Trouver l'utilisateur dans la base de données par email
+        const user = await User.findOne({ email });
+
+        // Si l'utilisateur existe
+        if (user) {
+
+            if (password == user.password) {
+                console.log(password);
+                // Si le mot de passe correspond, définir l'ID utilisateur dans la session
+                req.session.userId = user._id;
+
+                // Envoyer une réponse JSON indiquant le succès
+                res.status(200).json({ success: true });
+            } else {
+                // Si le mot de passe ne correspond pas, renvoyer une erreur d'authentification
+                res.status(401).json({ message: 'Invalid credentials' });
+            }
+        } else {
+            // Si l'utilisateur n'existe pas, renvoyer une erreur d'authentification
+            res.status(401).json({ message: 'Invalid credentials' });
+        }
+    } catch (error) {
+        // En cas d'erreur serveur, renvoyer une réponse avec le statut 500
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
     // If authentication is successful
     //mock id
-    req.session.userId = "65becd30c93f464f57302939";
+    // req.session.userId = "65becd30c93f464f57302939";
 
-    res.status(200).json({ success: true });
+    // res.status(200).json({ success: true });
 
 
 

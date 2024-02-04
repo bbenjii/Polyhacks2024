@@ -18,28 +18,40 @@ function displayUsers(users) {
     });
 }
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {;
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(),
-    })
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('fname').value;
+
+    if (!email || !password) {
+        // Afficher un message d'erreur à l'utilisateur
+        alert('Veuillez remplir tous les champs d\'identifiants.');
+        return; // Arrêter le traitement ici sans soumettre la requête
+    } else {
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        })
         .then(response => {
             if (response.ok) {
-                // Redirect to dashboard if login is successful
+                // Rediriger vers le tableau de bord si la connexion est réussie
                 window.location.href = '/dashboard.html';
             } else {
-                // Handle login failure here
-                console.log('Login failed');
+                // Si les identifiants sont faux, réinitialiser la page
+                location.reload();
             }
         })
         .catch((error) => {
             console.error('Error:', error);
         });
+    }
 });
+
+
 
 document.getElementById('signupForm').addEventListener('submit', function(e) {;
 
