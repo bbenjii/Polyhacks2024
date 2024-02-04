@@ -69,3 +69,24 @@ function showMessage(message, isError) {
         messageDiv.remove();
     }, 5000);
 }
+
+function logout() {
+    fetch('http://localhost:3000/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            // Rediriger vers la page de connexion après la déconnexion réussie
+            window.location.href = 'index.html';
+        } else {
+            // Gérer les erreurs de déconnexion ici
+            console.log('Logout failed');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}

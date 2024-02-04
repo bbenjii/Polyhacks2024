@@ -211,3 +211,18 @@ app.post('/users', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+app.post('/logout', (req, res) => {
+    // Déconnectez l'utilisateur en mettant à jour l'état de session
+    req.session.userId = null;
+    res.status(200).json({ success: true });
+});
+
+// ... (autres routes et configurations) ...
+
+// Assurez-vous que cette route est après la définition de la session pour garantir l'accès à req.session
+app.get('/dashboard', checkAuth, (req, res) => {
+    console.log("redirect done")
+    res.sendFile('/public/dashboard.html', { root: __dirname });
+});
+

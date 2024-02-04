@@ -89,3 +89,4 @@ function redirectToFAQ() {
     // Rediriger vers la page FAQ.html
     window.location.href = 'FAQ.html';
 }
+
